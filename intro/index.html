@@ -10,21 +10,36 @@
 </head>
 
 <body>
-  <header>
-    <h1>Vue Course Goals</h1>
-  </header>
-  <section id="user-goal">
-    <h2>My Course Goal</h2>
+  <div id="intro">
+    <header>
+      <h1>Vue Course Goals</h1>
+    </header>
+    <section class="topic">
+      <h2>My Course Goal</h2>
 
-    <!-- this can render html tags but can also be unsafe -->
-    <p v-html="outputGoal()"></p>
-    
-    <!-- this will print the html tags onto the screen -->
-    <p>{{outputGoal()}}</p>
+      <!-- this can render html tags but can also be unsafe -->
+      <p v-html="outputGoal()"></p>
 
-    <p>Learn more <a v-bind:href="vueLink">about Vue</a></p>
+      <!-- this will print the html tags onto the screen -->
+      <p>{{outputGoal()}}</p>
 
-  </section>
+      <p>Learn more <a v-bind:href="vueLink">about Vue</a></p>
+
+    </section>
+  </div>
+
+  <div id="vue_events">
+    <header>
+      <h1>Vue Events</h1>
+    </header>
+    <section class="topic">
+      <h2>Events in Action</h2>
+      <button v-on:click="increase">Add</button>
+      <button v-on:click="reduce">Reduce</button>
+      <p>Result: {{counter}}</p>
+    </section>
+
+  </div>
   <script src="https://unpkg.com/vue" defer></script>
   <script src="./app.js" defer></script>
 </body>
