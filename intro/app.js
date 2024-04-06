@@ -24,24 +24,34 @@ const introApp = Vue.createApp({
 
 introApp.mount("#intro");
 
-
 const eventsApp = Vue.createApp({
-  data(){
+  data() {
     return {
       counter: 0,
-      name: ''
-    }
+      name: "",
+      confirmedName: ""
+    };
   },
   methods: {
-    setName(event){
+    confirmInput() {
+      this.confirmedName = this.name;
+    },
+    submitForm(event) {
+      event.preventDefault();
+      alert("Submitted!");
+    },
+    submitOtherForm() {
+      alert("Submitted!");
+    },
+    setName(event) {
       this.name = event.target.value;
     },
-    increase(){
+    increase() {
       this.counter += 1;
     },
-    reduce(){
+    reduce() {
       this.counter -= 1;
-    }
-  }
+    },
+  },
 });
 eventsApp.mount("#vue_events");
