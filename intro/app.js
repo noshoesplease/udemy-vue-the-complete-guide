@@ -1,8 +1,9 @@
-
 const app = Vue.createApp(
   {
     data() {
-      return {}
+      return {
+        courseGoal: "Finish the course and learn Vue!",
+      }
     }
   }
 );
