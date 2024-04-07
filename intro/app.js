@@ -80,7 +80,7 @@ const dynamicStylesApp = Vue.createApp({
       return { active: this.boxASelected };
     },
     boxBClasses() {
-      return ['demo',{ active: this.boxBSelected }];
+      return ["demo", { active: this.boxBSelected }];
     },
     boxCClasses() {
       return { active: this.boxCSelected };
