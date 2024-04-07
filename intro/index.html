@@ -28,6 +28,8 @@
     </section>
   </div>
 
+
+
   <div id="vue_events">
     <header>
       <h1>Vue Events</h1>
@@ -40,28 +42,10 @@
       <p>Result: {{counter}}</p>
       <!-- v-once is a niche feature. not used very much, according to instructor -->
       <input v-bind:value="confirmedName" v-on:input="setName" type="text" v-on:keyup.enter="confirmInput">
-      
-      <!-- two way binding -->
-      <input v-model="confirmedName">
-      
-      <button v-on:click="resetInput">Reset Input</button>
-      <p>Your name: {{confirmedName}}</p>
-
-      <form v-on:submit="submitForm">
-        <h2>A form without event modifiers</h2>
-        <input type="text">
-        <button>Sign up</button>
-      </form>
-
-      <form v-on:submit.prevent="submitOtherForm">
-        <h2>A form with event modifiers</h2>
-        <input type="text">
-        <button>Sign up</button>
-      </form>
-
+      <p>{{fullname}}</p>
     </section>
-
   </div>
+
   <script src="https://unpkg.com/vue" defer></script>
   <script src="./app.js" defer></script>
 </body>

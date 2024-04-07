@@ -32,6 +32,14 @@ const eventsApp = Vue.createApp({
       confirmedName: ""
     };
   },
+  computed: {
+    fullname() {
+      if (this.confirmedName === "") {
+        return "";
+      }
+      return this.confirmedName + " " + "Doe";
+    }
+  },
   methods: {
     confirmInput() {
       this.confirmedName = this.name;
@@ -58,3 +66,5 @@ const eventsApp = Vue.createApp({
   },
 });
 eventsApp.mount("#vue_events");
+
+
