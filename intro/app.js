@@ -29,7 +29,7 @@ const eventsApp = Vue.createApp({
     return {
       counter: 0,
       name: "",
-      confirmedName: ""
+      confirmedName: "",
     };
   },
   computed: {
@@ -38,7 +38,7 @@ const eventsApp = Vue.createApp({
         return "";
       }
       return this.confirmedName + " " + "Doe";
-    }
+    },
   },
   methods: {
     confirmInput() {
@@ -62,9 +62,29 @@ const eventsApp = Vue.createApp({
     },
     resetInput() {
       this.confirmedName = "";
-    }
+    },
   },
 });
 eventsApp.mount("#vue_events");
 
-
+const dynamicStylesApp = Vue.createApp({
+  data() {
+    return {
+      boxASelected: false,
+      boxBSelected: false,
+      boxCSelected: false,
+    };
+  },
+  methods: {
+    boxSelected(box) {
+      if (box === "A") {
+        this.boxASelected = !this.boxASelected;
+      } else if (box === "B") {
+        this.boxBSelected = !this.boxBSelected;
+      } else {
+        this.boxCSelected = !this.boxCSelected;
+      }
+    },
+  },
+});
+dynamicStylesApp.mount("#dynamic_styles");

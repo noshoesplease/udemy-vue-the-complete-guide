@@ -28,8 +28,6 @@
     </section>
   </div>
 
-
-
   <div id="vue_events">
     <header>
       <h1>Vue Events</h1>
@@ -45,6 +43,25 @@
       <p>{{fullname}}</p>
     </section>
   </div>
+
+  <div id="dynamic_styles">
+    <header>
+      <h1>Vue Dynamic Styling</h1>
+    </header>
+    <div class="topic">
+      <div 
+        class="demo" 
+        @click="boxSelected('A')"
+        :style="{borderColor: boxASelected ? 'red' : '#ccc'}"
+        >
+        </div>
+      <div class="demo"></div> 
+      <div class="demo"></div>
+    </div>
+  </div>
+
+
+
 
   <script src="https://unpkg.com/vue" defer></script>
   <script src="./app.js" defer></script>
