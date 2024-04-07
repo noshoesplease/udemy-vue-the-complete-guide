@@ -23,7 +23,7 @@
       <!-- this will print the html tags onto the screen -->
       <p>{{outputGoal()}}</p>
 
-      <p>Learn more <a v-bind:href="vueLink">about Vue</a></p>
+      <p>Learn more <a :href="vueLink">about Vue</a></p>
 
     </section>
   </div>
@@ -36,12 +36,12 @@
     </header>
     <section class="topic">
       <h2>Events in Action</h2>
-      <button v-on:click="increase">Add</button>
-      <button v-on:click="reduce">Reduce</button>
+      <button @click="increase">Add</button>
+      <button @click="reduce">Reduce</button>
       <p v-once>Starting Counter: {{counter}}</p>
       <p>Result: {{counter}}</p>
       <!-- v-once is a niche feature. not used very much, according to instructor -->
-      <input v-bind:value="confirmedName" v-on:input="setName" type="text" v-on:keyup.enter="confirmInput">
+      <input :value="confirmedName" @input="setName" type="text" @keyup.enter="confirmInput">
       <p>{{fullname}}</p>
     </section>
   </div>
