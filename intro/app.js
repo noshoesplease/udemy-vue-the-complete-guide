@@ -52,6 +52,9 @@ const eventsApp = Vue.createApp({
     reduce() {
       this.counter -= 1;
     },
+    resetInput() {
+      this.confirmedName = "";
+    }
   },
 });
 eventsApp.mount("#vue_events");
