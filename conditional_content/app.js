@@ -4,6 +4,9 @@ const app = Vue.createApp({
   },
   methods: {
     addGoal() {
+      if (this.enteredGoal.trim() === "") {
+        return;
+      }
       this.goals.push(this.enteredGoal);
       this.enteredGoal = "";
     }
