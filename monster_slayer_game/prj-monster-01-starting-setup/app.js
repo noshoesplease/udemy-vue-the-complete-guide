@@ -20,6 +20,20 @@ const app = Vue.createApp({
       this.playerHealth -= attackValue;
     },
   },
+  computed: {
+    monsterBarStyles() {
+      if (this.monsterHealth < 0) {
+        return { width: "0%" };
+      }
+      return { width: this.monsterHealth + "%" };
+    },
+    playerBarStyles() {
+      if (this.playerHealth < 0) {
+        return { width: "0%" };
+      }
+      return { width: this.playerHealth + "%" };
+    },
+  },
 });
 
 app.mount("#game");
