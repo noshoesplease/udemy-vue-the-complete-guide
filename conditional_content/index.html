@@ -20,10 +20,11 @@
       <h2>My course goals</h2>
       <input v-model="enteredGoal" type="text" />
       <button @click="addGoal">Add Goal</button>
-      <p v-if="goals.length===0">No goals have been added yet - please start adding some!</p>
-      <ul>
+      <p v-if="goals.length === 0">No goals have been added yet - please start adding some!</p>
+      <ul v-else-if="goals.length > 0">
         <li>Goal</li>
       </ul>
+      <p v-else>fallback content</p>
     </section>
   </body>
 </html>
