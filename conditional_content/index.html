@@ -25,6 +25,11 @@
         <li>Goal</li>
       </ul>
       <p v-else>fallback content</p>
+
+      <p v-show="goals.length === 0">No goals have been added yet - please start adding some!</p>
+      <ul v-show="goals.length > 0">
+        <li>Goal</li>
+      </ul>
     </section>
   </body>
 </html>
