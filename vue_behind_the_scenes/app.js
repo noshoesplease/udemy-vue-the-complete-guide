@@ -3,6 +3,7 @@ const app = Vue.createApp({
     return {
       currentUserInput: "",
       message: "Vue is great!",
+      messageRef: "This is a reference message",
     };
   },
   methods: {
@@ -11,6 +12,10 @@ const app = Vue.createApp({
     },
     setText() {
       this.message = this.currentUserInput;
+    },
+    setTextRef() {
+      this.messageRef = this.$refs.userText.value;
+
     },
   },
 });
