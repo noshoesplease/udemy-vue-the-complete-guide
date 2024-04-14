@@ -37,17 +37,16 @@ export default {
       default: false,
     },
   },
-  // emits: ["toggle-favorite"],
-  emits: {
-    "toggle-favorite": function (id) {
-      if (id) {
-        return true;
-      }
-      console.warn("No ID provided!");
-      return false;
-    },
-  },
-
+  emits: ["toggle-favorite"],
+  // emits: {
+  //   "toggle-favorite": function (id) {
+  //     if (id) {
+  //       return true;
+  //     }
+  //     console.warn("No ID provided!");
+  //     return false;
+  //   },
+  // },
   data() {
     return {
       detailsAreVisible: false,
