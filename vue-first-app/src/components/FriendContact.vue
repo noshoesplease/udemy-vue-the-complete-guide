@@ -1,6 +1,6 @@
 <template>
   <li>
-    <h2>{{ name }} {{ isFavorite ? "(Favorite)":"" }}</h2>
+    <h2>{{ name }} {{ isFavorite ? "(Favorite)" : "" }}</h2>
     <button @click="toggleFavorite">Toggle Favorite</button>
     <button @click="toggleDetails">
       {{ detailsAreVisible ? "Hide" : "Show" }} Details
@@ -37,6 +37,17 @@ export default {
       default: false,
     },
   },
+  // emits: ["toggle-favorite"],
+  emits: {
+    "toggle-favorite": function (id) {
+      if (id) {
+        return true;
+      }
+      console.warn("No ID provided!");
+      return false;
+    },
+  },
+
   data() {
     return {
       detailsAreVisible: false,
