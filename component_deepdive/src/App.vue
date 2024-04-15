@@ -6,7 +6,7 @@
 
     <!-- <badge-list></badge-list> -->
     <!-- <badge-list /> -->
-    <BadgesList />
+    <BadgeList />
 
     <!-- <user-info
       :full-name="activeUser.name"
