@@ -1,7 +1,10 @@
 <template>
   <section>
-    <header>
-      <slot name="header"></slot>
+    <!-- <header> -->
+    <header v-if="$slots.header">
+      <slot name="header">
+        <!-- <h2>Default</h2> -->
+      </slot>
     </header>
     <slot></slot>
   </section>
@@ -9,9 +12,11 @@
 
 <script>
 export default {
+  mounted() {
+    console.log(this.$slots.header)
+  }
 }
 </script>
-
 
 <style scoped>
 section {
