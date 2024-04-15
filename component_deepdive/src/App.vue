@@ -1,9 +1,6 @@
 <template>
   <div>
-    <!-- <the-header></the-header> -->
-    <!-- <the-header /> -->
-    <TheHeader />
-
+    <the-header></the-header>
     <div>
       <button @click="setSelectedComponent('active-goals')">
         Active Goals
@@ -13,30 +10,19 @@
       </button>
       <!-- <ActiveGoals v-if="selectedComponent === 'active-goals'"></ActiveGoals> -->
       <!-- <ManageGoals v-if="selectedComponent === 'manage-goals'"></ManageGoals> -->
-      <component :is="selectedComponent"></component>
+      <keep-alive>
+        <component :is="selectedComponent"></component>
+      </keep-alive>
     </div>
 
+    <badge-list></badge-list>
 
+    <user-info
+      :full-name="activeUser.name"
+      :info-text="activeUser.description"
+      :role="activeUser.role"
+    ></user-info>
     
-    <!-- <badge-list></badge-list> -->
-    <!-- <badge-list /> -->
-    <BadgeList />
-
-    <!-- <user-info
-      :full-name="activeUser.name"
-      :info-text="activeUser.description"
-      :role="activeUser.role"
-    ></user-info> -->
-    <!-- <user-info
-      :full-name="activeUser.name"
-      :info-text="activeUser.description"
-      :role="activeUser.role"
-    /> -->
-    <UserInfo
-      :full-name="activeUser.name"
-      :info-text="activeUser.description"
-      :role="activeUser.role"
-    />
 
     <!-- /**
      * It includes two forms for Scoped Slots.
@@ -56,10 +42,10 @@
         <p>{{ slotProps['anotherProp'] }}</p>
       </template>
     </CourseGoals> -->
-    <CourseGoals #default="slotProps">
+    <course-goals #default="slotProps">
       <h2>{{ slotProps.item }}</h2>
       <p>{{ slotProps["anotherProp"] }}</p>
-    </CourseGoals>
+    </course-goals>
   </div>
 </template>
 
