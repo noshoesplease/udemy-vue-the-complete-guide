@@ -1,10 +1,12 @@
 <template>
   <base-card>
-    <header>
+    <template v-slot:header>
       <h3>{{ fullName }}</h3>
       <base-badge :type="role" :caption="role.toUpperCase()"></base-badge>
-    </header>
-    <p>{{ infoText }}</p>
+    </template>
+    <template v-slot:default>
+      <p>{{ infoText }}</p>
+    </template>
   </base-card>
 </template>
 
@@ -13,11 +15,3 @@ export default {
   props: ['fullName', 'infoText', 'role'],
 };
 </script>
-
-<style scoped>
-section header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-</style>
