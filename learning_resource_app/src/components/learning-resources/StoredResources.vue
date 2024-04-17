@@ -1,13 +1,3 @@
-<script>
-import LearningResource from "./LearningResource.vue";
-export default {
-  props: ["resources"],
-  components: {
-    LearningResource,
-  },
-};
-</script>
-
 <template>
   <ul>
     <learning-resource
@@ -20,7 +10,15 @@ export default {
   </ul>
 </template>
 
-
+<script>
+import LearningResource from "./LearningResource.vue";
+export default {
+  props: ["resources"],
+  components: {
+    LearningResource,
+  },
+};
+</script>
 
 <style scoped>
 ul {

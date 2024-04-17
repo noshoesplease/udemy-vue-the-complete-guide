@@ -1,9 +1,3 @@
-<script>
-export default {
-  props: ["title", "description", "link"],
-};
-</script>
-
 <template>
   <li>
     <base-card>
@@ -18,6 +12,12 @@ export default {
     </base-card>
   </li>
 </template>
+
+<script>
+export default {
+  props: ["title", "description", "link"],
+};
+</script>
 
 <style scoped>
 li {
