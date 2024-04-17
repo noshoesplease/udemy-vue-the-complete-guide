@@ -1,19 +1,21 @@
 <template>
   <ul>
-    <li v-for="resource in storedResources" :key="resource.id">
-      {{ resource.title }}
-      {{ resource.description }}
-      {{ resource.link }}
-    </li>
+    <learning-resource
+      v-for="resource in storedResources"
+      :key="resource.id"
+      :title="resource.title"
+      :description="resource.description"
+      :link="resource.link"
+    ></learning-resource>
   </ul>
 </template>
 
 <script>
-import LearningResource from "./components/LearningResource.vue";
+import LearningResource from "./components/learning-resources/LearningResource.vue";
 export default {
-    components: {
-        LearningResource,
-    },
+  components: {
+    LearningResource,
+  },
   data() {
     return {
       storedResources: [
@@ -28,12 +30,11 @@ export default {
           title: "Google",
           description: "Learn to Google...",
           link: "https://www.google.com",
-        }
+        },
       ],
     };
   },
 };
 </script>
-
 
 <style></style>
