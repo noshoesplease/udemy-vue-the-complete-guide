@@ -1,27 +1,43 @@
 <template>
   <base-card>
-    <form action="">
+    <form @submit.prevent="submitData">
       <fieldset>
         <label for="title">Title</label>
-        <input name="title" id="title" type="text" />
+        <input name="title" id="title" type="text" ref="titleInput" />
       </fieldset>
       <fieldset>
         <label for="description">Description</label>
-        <textarea name="description" id="description" rows="3" />
+        <textarea
+          name="description"
+          id="description"
+          rows="3"
+          ref="descriptionInput"
+        />
       </fieldset>
       <fieldset>
         <label for="link">Link</label>
-        <input name="link" id="link" type="url" />
+        <input name="link" id="link" type="url" ref="linkInput" />
       </fieldset>
       <fieldset>
         <base-button type="submit">Add Resource</base-button>
       </fieldset>
-      
     </form>
   </base-card>
 </template>
 
-<script></script>
+<script>
+export default {
+  inject: ["addResource"],
+  methods: {
+    submitData() {
+      const title = this.$refs.titleInput.value;
+      const description = this.$refs.descriptionInput.value;
+      const link = this.$refs.linkInput.value;
+      this.addResource(title, description, link);
+    },
+  },
+};
+</script>
 
 <style scoped>
 label {
