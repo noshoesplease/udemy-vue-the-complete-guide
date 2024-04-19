@@ -13,6 +13,7 @@ export default {
     TheResources,
   },
 };
+
 </script>
 
 <style>
