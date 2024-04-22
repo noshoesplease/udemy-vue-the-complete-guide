@@ -100,7 +100,7 @@
     </div>
 
     <div class="form-control">
-      <rating-control></rating-control>
+      <rating-control v-model="rating"></rating-control>
     </div>
 
     <div class="form-control">
@@ -135,6 +135,7 @@ export default {
       how: null,
       confirmTerms: false,
       userNameValidity: "pending",
+      rating: null,
     };
   },
   methods: {
@@ -162,6 +163,9 @@ export default {
 
       console.log("Confirm Terms: " + this.confirmTerms);
       this.confirmTerms = false;
+
+      console.log("Rating: " + this.rating);
+      this.rating = null;
     },
   },
   computed: {},
