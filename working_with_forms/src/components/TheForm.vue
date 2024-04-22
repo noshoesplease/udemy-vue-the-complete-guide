@@ -30,33 +30,76 @@
     <div class="form-control">
       <h2>What are you interested in?</h2>
       <div>
-        <input id="interest-news" name="interest" type="checkbox" />
+        <input
+          value="news"
+          v-model="interest"
+          id="interest-news"
+          name="interest"
+          type="checkbox"
+        />
         <label for="interest-news">News</label>
       </div>
       <div>
-        <input id="interest-tutorials" name="interest" type="checkbox" />
+        <input
+          value="tutorials"
+          v-model="interest"
+          id="interest-tutorials"
+          name="interest"
+          type="checkbox"
+        />
         <label for="interest-tutorials">Tutorials</label>
       </div>
       <div>
-        <input id="interest-nothing" name="interest" type="checkbox" />
+        <input
+          value="nothing"
+          v-model="interest"
+          id="interest-nothing"
+          name="interest"
+          type="checkbox"
+        />
         <label for="interest-nothing">Nothing</label>
       </div>
     </div>
     <div class="form-control">
       <h2>How do you learn?</h2>
       <div>
-        <input id="how-video" name="how" type="radio" />
+        <input
+          value="video"
+          v-model="how"
+          id="how-video"
+          name="how"
+          type="radio"
+        />
         <label for="how-video">Video Courses</label>
       </div>
       <div>
-        <input id="how-blogs" name="how" type="radio" />
+        <input
+          value="blogs"
+          v-model="how"
+          id="how-blogs"
+          name="how"
+          type="radio"
+        />
         <label for="how-blogs">Blogs</label>
       </div>
       <div>
-        <input id="how-other" name="how" type="radio" />
+        <input
+          value="other"
+          v-model="how"
+          id="how-other"
+          name="how"
+          type="radio"
+        />
         <label for="how-other">Other</label>
       </div>
     </div>
+
+    <div class="form-control">
+      <h2>Agree to terms of use?</h2>
+      <input v-model="confirmTerms" name="confirm-terms" id="confirm-terms" type="checkbox" />
+      <label for="confirm-terms">I agree</label>
+    </div>
+
     <div>
       <button>Save Data</button>
     </div>
@@ -70,6 +113,9 @@ export default {
       userName: "",
       userAge: null,
       referrer: "wom",
+      interest: [],
+      how: null,
+      confirmTerms: false,
     };
   },
   methods: {
@@ -81,6 +127,15 @@ export default {
       this.userAge = null;
       console.log("Referrer: " + this.referrer);
       this.referrer = "wom";
+
+      console.log("Interest: " + this.interest);
+      this.interest = [];
+
+      console.log("How: " + this.how);
+      this.how = null;
+
+      console.log("Confirm Terms: " + this.confirmTerms);
+      this.confirmTerms = false;
     },
   },
   computed: {},
