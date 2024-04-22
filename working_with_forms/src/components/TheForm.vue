@@ -2,11 +2,11 @@
   <form @submit.prevent="submitForm">
     <div class="form-control">
       <label for="user-name">Your Name</label>
-      <input id="user-name" name="user-name" type="text" v-model="userName"/>
+      <input id="user-name" name="user-name" type="text" v-model.trim="userName" />
     </div>
     <div class="form-control">
       <label for="age">Your Age (Years)</label>
-      <input id="age" name="age" type="number" />
+      <input id="age" name="age" type="number" v-model.number="userAge" ref="ageInput" />
     </div>
     <div class="form-control">
       <label for="referrer">How did you hear about us?</label>
@@ -53,23 +53,25 @@
 </template>
 
 <script>
-
 export default {
   data() {
     return {
-      userName: ''
-    }
+      userName: "",
+      userAge: null,
+    };
   },
   methods: {
     submitForm() {
       console.log(this.userName);
-      this.userName = '';
-    }
+      this.userName = "";
+      console.log(this.userAge + 342);; // this yields a number
+      console.log(this.$refs.ageInput.value + 342); // this yields a string
+      this.userAge = null;
+    },
   },
-  computed: {}
-}
+  computed: {},
+};
 </script>
-
 
 <style scoped>
 form {
@@ -106,15 +108,15 @@ select {
   width: auto;
 }
 
-input[type='checkbox'],
-input[type='radio'] {
+input[type="checkbox"],
+input[type="radio"] {
   display: inline-block;
   width: auto;
   margin-right: 1rem;
 }
 
-input[type='checkbox'] + label,
-input[type='radio'] + label {
+input[type="checkbox"] + label,
+input[type="radio"] + label {
   font-weight: normal;
 }
 
