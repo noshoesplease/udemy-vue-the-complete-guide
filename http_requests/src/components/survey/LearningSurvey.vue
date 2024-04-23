@@ -67,7 +67,6 @@ export default {
       error: null,
     };
   },
-  // emits: ["survey-submit"],
   methods: {
     submitSurvey() {
       if (this.enteredName === "" || !this.chosenRating) {
@@ -75,11 +74,6 @@ export default {
         return;
       }
       this.invalidInput = false;
-
-      // this.$emit("survey-submit", {
-      //   userName: this.enteredName,
-      //   rating: this.chosenRating,
-      // });
 
       if(!import.meta.env.VITE_FIREBASE_URL || import.meta.env.VITE_FIREBASE_URL.trim() === "") {
         console.error("No Firebase URL provided");
