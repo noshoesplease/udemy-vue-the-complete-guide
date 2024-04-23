@@ -41,6 +41,7 @@
         <p v-if="invalidInput">
           One or more input fields are invalid. Please check your provided data.
         </p>
+        <p v-if="error">{{ error }}</p>
         <div>
           <base-button>Submit</base-button>
         </div>
@@ -63,6 +64,7 @@ export default {
       enteredName: "",
       chosenRating: null,
       invalidInput: false,
+      error: null,
     };
   },
   // emits: ["survey-submit"],
@@ -84,13 +86,25 @@ export default {
         return;
       }
 
+      this.error = null;
       fetch(import.meta.env.VITE_FIREBASE_URL, {
         ...fireBasePOSTFetchConfig,
-        body: JSON.stringify({
+        body: {
           userName: this.enteredName,
           rating: this.chosenRating,
-        }),
-      });
+        },
+      }).then(
+        (response) => {
+          if (response.ok) {
+          }
+          else {
+            throw new Error("Failed to submit survey data");
+          }
+        }
+      ).catch((error) => {
+        console.error("Failed to submit survey data");
+        this.error = error.message; 
+      })
 
       this.enteredName = "";
       this.chosenRating = null;
