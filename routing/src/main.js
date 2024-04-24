@@ -10,6 +10,7 @@ const router = createRouter({
     { path: "/teams", component:  TeamsList},
     { path: "/users", component: () => import("./components/users/UsersList.vue") },
   ],
+  linkActiveClass: "custom-class",
 });
 
 const app = createApp(App);
