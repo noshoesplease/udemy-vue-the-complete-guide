@@ -47,6 +47,21 @@ const router = createRouter({
   },
 });
 
+router.beforeEach((to, from, next) => {
+  console.log("Global beforeEach");
+  console.log(to, from);
+  next();
+
+  // Navigation Guard example
+  // if (to.name === "team-members") {
+  //   next();
+  // }
+  // next({
+  //   name: "team-members",
+  //   params: { teamId: "t2" },
+  // });
+});
+
 const app = createApp(App);
 
 app.use(router);
