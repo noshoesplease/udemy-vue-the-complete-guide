@@ -10,10 +10,13 @@ const router = createRouter({
   history: createWebHistory(),
   routes: [
     { path: "/", redirect: "/teams" },
-    { path: "/teams", component: TeamsList },
+    {
+      path: "/teams",
+      component: TeamsList,
+      children: [{ path: ":teamId", component: TeamMembers, props: true }],
+    },
     { path: "/users", component: UsersList },
-    { path: "/teams/:teamId", component: TeamMembers, props: true},
-    { path: "/:notFound(.*)", component: TheNotFound }
+    { path: "/:notFound(.*)", component: TheNotFound },
   ],
   linkActiveClass: "custom-class",
 });
