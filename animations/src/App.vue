@@ -15,10 +15,28 @@
   </div>
 
   <div class="container">
-    <transition>
-      <p v-if="paraIsVisible">This is only sometimes visible...</p>
+    <transition name="customNamePrefixPara">
+      <p v-if="customNamePrefixParaIsVisible">
+        This is only sometimes visible...
+      </p>
     </transition>
-    <button @click="togglePara">Toggle Paragraph</button>
+    <button @click="customNamePrefixParaToggle">Toggle Paragraph</button>
+  </div>
+
+  <div class="container">
+    <transition
+      enter-from-class="customEnterFromClass"
+      enter-active-class="customEnterActiveClass"
+      enter-to-class="customEnterToClass"
+      leave-from-class="customLeaveFromClass"
+      leave-active-class="customLeaveActiveClass"
+      leave-to-class="customLeaveToClass"
+    >
+      <p v-if="customClassParaIsVisible">
+        This too is only sometimes visible...
+      </p>
+    </transition>
+    <button @click="customClassParaToggle">Toggle Paragraph</button>
   </div>
 
   <base-modal @close="hideDialog" v-if="dialogIsVisible">
@@ -45,7 +63,8 @@ export default {
       dialogIsVisible: false,
       animatedTransitionBlock: false,
       animatedKeyFrameBlock: false,
-      paraIsVisible: false,
+      customNamePrefixParaIsVisible: false,
+      customClassParaIsVisible: false,
     };
   },
   methods: {
@@ -61,8 +80,11 @@ export default {
     animateKeyFrameBlock() {
       this.animatedKeyFrameBlock = !this.animatedKeyFrameBlock;
     },
-    togglePara() {
-      this.paraIsVisible = !this.paraIsVisible;
+    customNamePrefixParaToggle() {
+      this.customNamePrefixParaIsVisible = !this.customNamePrefixParaIsVisible;
+    },
+    customClassParaToggle() {
+      this.customClassParaIsVisible = !this.customClassParaIsVisible;
     },
   },
 };
@@ -108,28 +130,54 @@ button:active {
   animation: move 2s ease-out;
 }
 
-.v-enter-from {
+.customNamePrefixPara-enter-from {
   opacity: 0;
   transform: translateY(-30px) scale(0.9);
 }
-.v-enter-active {
+.customNamePrefixPara-enter-active {
   transition: opacity 0.5s ease-out, transform 0.5s ease-out;
   color: #a80b48;
 }
-.v-enter-to {
+.customNamePrefixPara-enter-to {
   opacity: 1;
   transform: translateY(0) scale(1);
 }
 
-.v-leave-from {
+.customNamePrefixPara-leave-from {
   opacity: 1;
   transform: translateY(0) scale(1);
 }
-.v-leave-active {
+.customNamePrefixPara-leave-active {
   transition: opacity 0.5s ease-out, transform 0.5s ease-out;
   color: #003181;
 }
-.v-leave-to {
+.customNamePrefixPara-leave-to {
+  opacity: 0;
+  transform: translateY(30px) scale(0.9);
+}
+
+.customEnterFromClass {
+  opacity: 0;
+  transform: translateY(-30px) scale(0.9);
+}
+.customEnterActiveClass {
+  transition: opacity 0.5s ease-out, transform 0.5s ease-out;
+  color: #6e0ba8;
+}
+.customEnterToClass {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+}
+
+.customLeaveFromClass {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+}
+.customLeaveActiveClass {
+  transition: opacity 0.5s ease-out, transform 0.5s ease-out;
+  color: #7b0081;
+}
+.customLeaveToClass {
   opacity: 0;
   transform: translateY(30px) scale(0.9);
 }
