@@ -1,7 +1,10 @@
 <template>
   <div class="container">
-    <div class="block"></div>
-    <button>Animate</button>
+    <div
+      class="block"
+      :class="{ transition_animation: animatedTransitionBlock }"
+    ></div>
+    <button @click="animateTransitionBlock">Animate with Transitions</button>
   </div>
   <base-modal @close="hideDialog" v-if="dialogIsVisible">
     <p>This is a test dialog!</p>
@@ -10,12 +13,16 @@
   <div class="container">
     <button @click="showDialog">Show Dialog</button>
   </div>
-</template>  
+</template>
 
 <script>
 export default {
   data() {
-    return { dialogIsVisible: false };
+    return {
+      dialogIsVisible: false,
+      animatedTransitionBlock: false,
+      animatedKeyFrameBlock: false,
+    };
   },
   methods: {
     showDialog() {
@@ -24,6 +31,9 @@ export default {
     hideDialog() {
       this.dialogIsVisible = false;
     },
+    animateTransitionBlock() {
+      this.animatedTransitionBlock = !this.animatedTransitionBlock;
+    }
   },
 };
 </script>
@@ -58,6 +68,14 @@ button:active {
   background-color: #290033;
   margin-bottom: 2rem;
 }
+
+.transition_animation {
+  transition: transform 0.5s ease-in-out;
+  transform: translateX(-150px);
+}
+
+
+
 .container {
   max-width: 40rem;
   margin: 2rem auto;
