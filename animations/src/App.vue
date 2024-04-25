@@ -39,7 +39,10 @@
     <button @click="customClassParaToggle">Toggle Paragraph</button>
   </div>
 
-  <base-modal @close="hideDialog" v-if="dialogIsVisible">
+  <base-modal
+    :open="dialogIsVisible"
+    @close="hideDialog"
+  >
     <p>This is a test dialog!</p>
     <p>
       Animating the removal of this element is difficult without Vue because it
@@ -54,6 +57,20 @@
   <div class="container">
     <button @click="showDialog">Show Dialog</button>
   </div>
+
+  <base-modal
+    :open="transitionModalIsVisible"
+    @close="hideTransitionModal"
+  >
+    <p>This modal has been updated with a Transition Component</p>
+    <button @click="hideTransitionModal">Close it!</button>
+  </base-modal>
+
+  <div class="container">
+    <button @click="showTransitionModal">
+      Show Modal with Transition Component
+    </button>
+  </div>
 </template>
 
 <script>
@@ -65,14 +82,21 @@ export default {
       animatedKeyFrameBlock: false,
       customNamePrefixParaIsVisible: false,
       customClassParaIsVisible: false,
+      transitionModalIsVisible: false,
     };
   },
   methods: {
     showDialog() {
       this.dialogIsVisible = true;
     },
+    showTransitionModal() {
+      this.transitionModalIsVisible = true;
+    },
     hideDialog() {
       this.dialogIsVisible = false;
+    },
+    hideTransitionModal() {
+      this.transitionModalIsVisible = false;
     },
     animateTransitionBlock() {
       this.animatedTransitionBlock = !this.animatedTransitionBlock;
