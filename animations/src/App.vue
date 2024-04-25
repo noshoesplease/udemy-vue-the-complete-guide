@@ -23,6 +23,14 @@
 
   <base-modal @close="hideDialog" v-if="dialogIsVisible">
     <p>This is a test dialog!</p>
+    <p>
+      Animating the removal of this element is difficult without Vue because it
+      is unmounted before CSS is applied.
+    </p>
+    <p>
+      But with Vue, we can animate the removal of this element with the Vue
+      transition component.
+    </p>
     <button @click="hideDialog">Close it!</button>
   </base-modal>
   <div class="container">
@@ -98,6 +106,32 @@ button:active {
 
 .keyframe_animation {
   animation: move 2s ease-out;
+}
+
+.v-enter-from {
+  opacity: 0;
+  transform: translateY(-30px) scale(0.9);
+}
+.v-enter-active {
+  transition: opacity 0.5s ease-out, transform 0.5s ease-out;
+  color: #a80b48;
+}
+.v-enter-to {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+}
+
+.v-leave-from {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+}
+.v-leave-active {
+  transition: opacity 0.5s ease-out, transform 0.5s ease-out;
+  color: #003181;
+}
+.v-leave-to {
+  opacity: 0;
+  transform: translateY(30px) scale(0.9);
 }
 
 @keyframes move {
