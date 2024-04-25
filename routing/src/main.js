@@ -20,15 +20,31 @@ const router = createRouter({
         default: TeamsList,
         footer: TeamsFooter,
       },
-      children: [{ name:"team-members", path: ":teamId", component: TeamMembers, props: true }],
+      children: [
+        {
+          name: "team-members",
+          path: ":teamId",
+          component: TeamMembers,
+          props: true,
+        },
+      ],
     },
-    { path: "/users", components: {
-      default: UsersList,
-      footer: UsersFooter,
-    } },
+    {
+      path: "/users",
+      components: {
+        default: UsersList,
+        footer: UsersFooter,
+      },
+    },
     { path: "/:notFound(.*)", component: TheNotFound },
   ],
   linkActiveClass: "custom-class",
+  scrollBehavior(to, from, savedPosition) {
+    if (savedPosition) {
+      return savedPosition;
+    }
+    return { left: 0, top: 0, behavior: "smooth" };
+  },
 });
 
 const app = createApp(App);
