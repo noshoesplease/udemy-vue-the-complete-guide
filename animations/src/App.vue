@@ -1,11 +1,17 @@
 <template>
   <div class="container">
-    <div class="block" :class="{transition_animation: animatedTransitionBlock}"></div>
+    <div
+      class="block"
+      :class="{ transition_animation: animatedTransitionBlock }"
+    ></div>
     <button @click="animateTransitionBlock">Animate with Transitions</button>
   </div>
 
   <div class="container">
-    <div class="block" :class="{keyframe_animation: animatedKeyFrameBlock}"></div>
+    <div
+      class="block"
+      :class="{ keyframe_animation: animatedKeyFrameBlock }"
+    ></div>
     <button @click="animateKeyFrameBlock">Animate with Keyframes</button>
   </div>
   <base-modal @close="hideDialog" v-if="dialogIsVisible">
@@ -20,8 +26,11 @@
 <script>
 export default {
   data() {
-    return { dialogIsVisible: false, animatedTransitionBlock: false,
-      animatedKeyFrameBlock: false };
+    return {
+      dialogIsVisible: false,
+      animatedTransitionBlock: false,
+      animatedKeyFrameBlock: false,
+    };
   },
   methods: {
     showDialog() {
@@ -77,7 +86,7 @@ button:active {
 }
 
 .keyframe_animation {
-  animation: move 2s linear infinite;
+  animation: move 2s ease-out;
 }
 
 @keyframes move {
