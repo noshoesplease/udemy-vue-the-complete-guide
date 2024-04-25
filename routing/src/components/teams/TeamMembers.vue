@@ -43,6 +43,8 @@ export default {
   },
   created() {
     this.loadTeamMembers(this.teamId);
+    // comes from the query parameter set on the link in TeamMembers.vue
+    console.log(this.$route.query.sort)
   },
   watch: {
     teamId(newId) {
