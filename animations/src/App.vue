@@ -82,16 +82,15 @@ button:active {
 
 @keyframes move {
   0% {
-    transform: translateX(0);
+    transform: translateX(0) scale(1);
   }
   50% {
-    transform: translateX(20rem);
+    transform: translateX(20rem) scale(1.2);
   }
   100% {
-    transform: translateX(0);
+    transform: translateX(0) scale(1);
   }
 }
-
 
 .container {
   max-width: 40rem;
