@@ -6,7 +6,6 @@
     ></div>
     <button @click="animateTransitionBlock">Animate with Transitions</button>
   </div>
-
   <div class="container">
     <div
       class="block"
@@ -14,6 +13,14 @@
     ></div>
     <button @click="animateKeyFrameBlock">Animate with Keyframes</button>
   </div>
+
+  <div class="container">
+    <transition>
+      <p v-if="paraIsVisible">This is only sometimes visible...</p>
+    </transition>
+    <button @click="togglePara">Toggle Paragraph</button>
+  </div>
+
   <base-modal @close="hideDialog" v-if="dialogIsVisible">
     <p>This is a test dialog!</p>
     <button @click="hideDialog">Close it!</button>
@@ -30,6 +37,7 @@ export default {
       dialogIsVisible: false,
       animatedTransitionBlock: false,
       animatedKeyFrameBlock: false,
+      paraIsVisible: false,
     };
   },
   methods: {
@@ -44,6 +52,9 @@ export default {
     },
     animateKeyFrameBlock() {
       this.animatedKeyFrameBlock = !this.animatedKeyFrameBlock;
+    },
+    togglePara() {
+      this.paraIsVisible = !this.paraIsVisible;
     },
   },
 };
