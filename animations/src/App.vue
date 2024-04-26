@@ -16,6 +16,7 @@
 
   <div class="container">
     <transition
+      :css="false"
       @before-leave="beforeLeave"
       @leave="leave"
       @after-leave="afterLeave"
