@@ -17,8 +17,14 @@
   <div class="container">
     <transition
       @before-leave="beforeLeave"
+      @leave="leave"
+      @after-leave="afterLeave"
       @before-enter="beforeEnter"
+      @enter="enter"
+      @after-enter="afterEnter"
       name="customNamePrefixPara"
+      @enter-cancelled="enterCancelled"
+      @leave-cancelled="leaveCancelled"
     >
       <p v-if="customNamePrefixParaIsVisible">
         This is only sometimes visible...
@@ -89,16 +95,62 @@ export default {
       customClassParaIsVisible: false,
       transitionModalIsVisible: false,
       usersAreVisible: false,
+      enterInterval: null,
+      leaveInterval: null,
     };
   },
   methods: {
+    enterCancelled() {
+      console.log("Enter cancelled...");
+      clearInterval(this.enterInterval);
+    },
+    leaveCancelled() {
+      console.log("Leave cancelled...");
+      clearInterval(this.leaveInterval);
+    },
     beforeEnter(el) {
       console.log("Firing before enter...");
       el.style.color = "green";
+      el.style.opacity = 0;
+    },
+    enter(el, done) {
+      console.log("Firing enter...");
+      let round = 1;
+      this.enterInterval = setInterval(() => {
+        el.style.color = "blue";
+        el.style.opacity = round * 0.01;
+        round++;
+        if (round > 100) {
+          clearInterval(this.enterInterval);
+          done();
+        }
+      }, 20);
+    },
+    afterEnter(el) {
+      console.log("Firing after enter...");
+      el.style.color = "purple";
     },
     beforeLeave(el) {
       console.log("Firing before leave...");
       el.style.color = "red";
+      el.style.opacity = 1;
+    },
+    leave(el, done) {
+      console.log("Firing leave...");
+      let round = 1;
+      this.leaveInterval = setInterval(() => {
+        el.style.color = "orange";
+        el.style.opacity = 1 - round * 0.01;
+        round++;
+        if (round > 100) {
+          clearInterval(this.leaveInterval);
+          done();
+        }
+      }, 20);
+    },
+    afterLeave(el) {
+      console.log("Firing after leave...");
+      el.style.color = "black";
     },
     showUsers() {
       this.usersAreVisible = true;
