@@ -39,10 +39,14 @@
     <button @click="customClassParaToggle">Toggle Paragraph</button>
   </div>
 
-  <base-modal
-    :open="dialogIsVisible"
-    @close="hideDialog"
-  >
+  <div class="container">
+    <transition name="fade-button" mode="out-inf">
+      <button v-if="!usersAreVisible" @click="showUsers">Show users</button>
+      <button v-else @click="hideUsers">Hide users</button>
+    </transition>
+  </div>
+
+  <base-modal :open="dialogIsVisible" @close="hideDialog">
     <p>This is a test dialog!</p>
     <p>
       Animating the removal of this element is difficult without Vue because it
@@ -58,10 +62,7 @@
     <button @click="showDialog">Show Dialog</button>
   </div>
 
-  <base-modal
-    :open="transitionModalIsVisible"
-    @close="hideTransitionModal"
-  >
+  <base-modal :open="transitionModalIsVisible" @close="hideTransitionModal">
     <p>This modal has been updated with a Transition Component</p>
     <button @click="hideTransitionModal">Close it!</button>
   </base-modal>
@@ -83,9 +84,16 @@ export default {
       customNamePrefixParaIsVisible: false,
       customClassParaIsVisible: false,
       transitionModalIsVisible: false,
+      usersAreVisible: false,
     };
   },
   methods: {
+    showUsers() {
+      this.usersAreVisible = true;
+    },
+    hideUsers() {
+      this.usersAreVisible = false;
+    },
     showDialog() {
       this.dialogIsVisible = true;
     },
@@ -205,6 +213,24 @@ button:active {
   opacity: 0;
   transform: translateY(30px) scale(0.9);
 }
+
+.fade-button-enter-from,
+.fade-button-leave-to {
+  opacity: 0;
+}
+
+.fade-button-leave-from,
+.fade-button-enter-to {
+  opacity: 1;
+}
+
+.fade-button-enter-active {
+  transition: opacity 0.5s ease-out;
+}
+.fade-button-leave-active {
+  transition: opacity 0.5s ease-in;
+}
+
 
 @keyframes move {
   0% {
