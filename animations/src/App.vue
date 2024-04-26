@@ -15,7 +15,11 @@
   </div>
 
   <div class="container">
-    <transition name="customNamePrefixPara">
+    <transition
+      @before-leave="beforeLeave"
+      @before-enter="beforeEnter"
+      name="customNamePrefixPara"
+    >
       <p v-if="customNamePrefixParaIsVisible">
         This is only sometimes visible...
       </p>
@@ -40,7 +44,7 @@
   </div>
 
   <div class="container">
-    <transition name="fade-button" mode="out-inf">
+    <transition name="fade-button" mode="out-in">
       <button v-if="!usersAreVisible" @click="showUsers">Show users</button>
       <button v-else @click="hideUsers">Hide users</button>
     </transition>
@@ -88,6 +92,14 @@ export default {
     };
   },
   methods: {
+    beforeEnter(el) {
+      console.log("Firing before enter...");
+      el.style.color = "green";
+    },
+    beforeLeave(el) {
+      console.log("Firing before leave...");
+      el.style.color = "red";
+    },
     showUsers() {
       this.usersAreVisible = true;
     },
@@ -230,7 +242,6 @@ button:active {
 .fade-button-leave-active {
   transition: opacity 0.5s ease-in;
 }
-
 
 @keyframes move {
   0% {
