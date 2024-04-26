@@ -1,4 +1,16 @@
 <template>
+  <router-view v-slot="slotProps">
+    <transition name="route" mode="out-in">
+      <component :is="slotProps.Component" />
+    </transition>
+  </router-view>
+
+  <router-view v-slot="slotProps">
+    <transition name="fader" mode="out-in">
+      <component :is="slotProps.Component" />
+    </transition>
+  </router-view>
+
   <div class="container">
     <users-list></users-list>
   </div>
@@ -54,7 +66,7 @@
   </div>
 
   <div class="container">
-    <transition name="fade-button" mode="out-in">
+    <transition name="fader" mode="out-in">
       <button v-if="!usersAreVisible" @click="showUsers">Show users</button>
       <button v-else @click="hideUsers">Hide users</button>
     </transition>
@@ -286,20 +298,20 @@ button:active {
   transform: translateY(30px) scale(0.9);
 }
 
-.fade-button-enter-from,
-.fade-button-leave-to {
+.fader-enter-from,
+.fader-leave-to {
   opacity: 0;
 }
 
-.fade-button-leave-from,
-.fade-button-enter-to {
+.fader-leave-from,
+.fader-enter-to {
   opacity: 1;
 }
 
-.fade-button-enter-active {
+.fader-enter-active {
   transition: opacity 0.5s ease-out;
 }
-.fade-button-leave-active {
+.fader-leave-active {
   transition: opacity 0.5s ease-in;
 }
 
@@ -325,5 +337,16 @@ button:active {
   padding: 2rem;
   border: 2px solid #ccc;
   border-radius: 12px;
+}
+
+.route-enter-from,
+.route-enter-active {
+  animation: move 0.4s ease-out;
+}
+.route-enter-to {
+}
+
+.route-leave-active {
+  animation: move 0.4s ease-in;
 }
 </style>
