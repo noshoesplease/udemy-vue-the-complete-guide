@@ -8,9 +8,22 @@ const store = createStore({
       counter: 0,
     };
   },
+  actions: {  
+    increment(context) {
+      setTimeout(() => {
+        context.commit("increment");
+      }, 2000);
+    },
+    increase(context, payload) {
+      console.log
+      setTimeout(() => {
+        context.commit("increase", payload);
+      }, 2000);
+    }
+  },
   mutations: {
     increment(state) {
-      state.counter++;
+      state.counter = state.counter + 2;
     },
     increase(state, payload) {
       state.counter += payload.value;
