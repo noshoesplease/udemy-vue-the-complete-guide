@@ -3,7 +3,7 @@
     <the-counter></the-counter>
     <favorite-value></favorite-value>
     <change-counter></change-counter>
-    <button @click="addTen">Add 10</button>
+    <button @click="addTen">Add 20</button>
   </base-container>
 </template>
 
