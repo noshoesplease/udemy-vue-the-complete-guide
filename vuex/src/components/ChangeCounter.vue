@@ -1,7 +1,7 @@
 <template>
-  <button @click="addOne">Add 4</button>
-  <button @click="inc">Add 4</button>
-  <button @click="increase({ value: 10 })">Add 20</button>
+  <button @click="addOne">Add 1</button>
+  <button @click="inc">Add 1</button>
+  <button @click="increase({ value: 10 })">Add 10</button>
 </template>
 
 <script>

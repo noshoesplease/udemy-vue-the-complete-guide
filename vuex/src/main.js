@@ -2,12 +2,19 @@ import { createApp } from "vue";
 import { createStore } from "vuex";
 import App from "./App.vue";
 
-const store = createStore({
+const counterModule = {
   state() {
     return {
       counter: 0,
-      isLoggedIn: false,
     };
+  },
+  mutations: {
+    increment(state) {
+      state.counter++;
+    },
+    increase(state, payload) {
+      state.counter = state.counter + payload.value;
+    },
   },
   actions: {
     increment(context) {
@@ -17,8 +24,37 @@ const store = createStore({
     },
     increase(context, payload) {
       context.commit("increase", payload);
-      context.dispatch("increment");
     },
+  },
+  getters: {
+    finalCounter(state) {
+      return state.counter;
+    },
+    normalizedCounter(_, getters) {
+      const finalCounter = getters.finalCounter;
+      if (finalCounter < 0) {
+        return 0;
+      }
+      if (finalCounter > 100) {
+        return 100;
+      }
+      return finalCounter;
+    },
+  },
+};
+
+const authModule = {
+  state() {
+    return {
+      isLoggedIn: false,
+    };
+  },
+  mutations: {
+    setAuth(state, payload) {
+      state.isLoggedIn = payload.isAuth;
+    },
+  },
+  actions: {
     login(context) {
       context.commit("setAuth", { isAuth: true });
     },
@@ -26,34 +62,17 @@ const store = createStore({
       context.commit("setAuth", { isAuth: false });
     },
   },
-  mutations: {
-    increment(state) {
-      state.counter = state.counter + 2;
-    },
-    increase(state, payload) {
-      state.counter += payload.value;
-    },
-    setAuth(state, payload) {
-      state.isLoggedIn = payload.isAuth;
-    },
-  },
   getters: {
     userIsAuthenticated(state) {
       return state.isLoggedIn;
     },
-    finalCounter(state) {
-      return state.counter * 2;
-    },
-    normalizedCounter(_, getters) {
-      const finalCounter = getters.finalCounter;
-      if (finalCounter < 0) {
-        return 0;
-      } else if (finalCounter > 100) {
-        return 100;
-      } else {
-        return finalCounter;
-      }
-    },
+  },
+};
+
+const store = createStore({
+  modules: {
+    numbers: counterModule,
+    auth: authModule,
   },
 });
 
