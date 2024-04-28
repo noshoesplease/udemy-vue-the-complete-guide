@@ -1,5 +1,5 @@
 {
-  "name": "vuex",
+  "name": "challenge",
   "version": "0.0.0",
   "private": true,
   "type": "module",
@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "vue": "^3.4.21",
+    "vue-router": "^4.3.0",
     "vuex": "^4.0.2"
   },
   "devDependencies": {
