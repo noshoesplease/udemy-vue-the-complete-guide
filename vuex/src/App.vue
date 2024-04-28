@@ -27,12 +27,12 @@ export default {
   },
   computed: {
     isAuth() {
-      return this.$store.getters.userIsAuthenticated;
+      return this.$store.getters["auth/userIsAuthenticated"];
     },
   },
   methods: {
     addTen() {
-      this.$store.dispatch("increase", { value: 10 });
+      this.$store.dispatch("numbers/increase", { value: 10 });
     },
   },
 };

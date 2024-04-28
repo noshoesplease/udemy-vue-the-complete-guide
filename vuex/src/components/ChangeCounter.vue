@@ -9,14 +9,13 @@ import { mapActions } from "vuex";
 export default {
   methods: {
     addOne() {
-      this.$store.dispatch("increment");
+      this.$store.dispatch("numbers/increment");
     },
-    // ...mapActions(["increment", "increase"]),
-    ...mapActions({
+    // ...mapActions(["numbers/increment", "increase"]),
+    ...mapActions("numbers", {
       inc: "increment",
       increase: "increase",
     }),
-
   },
 };
 </script>

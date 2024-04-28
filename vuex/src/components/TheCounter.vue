@@ -8,12 +8,12 @@ import { mapGetters } from "vuex";
 export default {
   computed: {
     counter() {
-      return this.$store.getters.finalCounter;
+      return this.$store.getters["numbers/finalCounter"];
     },
 
     // Using mapGetters, which is a helper function provided by Vuex
     // to map the finalCounter getter to the finalCounter computed property
-    ...mapGetters(["finalCounter"]),
+    ...mapGetters("numbers", ["finalCounter"]),
   },
 };
 </script>
