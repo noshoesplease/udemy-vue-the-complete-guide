@@ -1,5 +1,5 @@
 <template>
-    coach detail page
+    COACH DETAIL PAGE
     <router-view></router-view>
     <router-link to="/coaches/c1/contact">Contact</router-link>
 </template>

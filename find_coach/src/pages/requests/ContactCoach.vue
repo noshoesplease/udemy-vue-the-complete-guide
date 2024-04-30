@@ -1,5 +1,5 @@
 <template>
-    contact coach
+    CONTACT COACH
 </template>
 
 <script>

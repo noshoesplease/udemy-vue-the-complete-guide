@@ -1,5 +1,5 @@
 <template>
-    coach registration page
+    COACH REGISTRATION PAGE
 </template>
 
 <script>

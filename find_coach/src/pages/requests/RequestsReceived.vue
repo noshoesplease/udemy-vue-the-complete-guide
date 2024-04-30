@@ -1,5 +1,5 @@
 <template>
-    requests received page
+    REQUESTS RECEIVED PAGE
 </template>
 
 <script>
