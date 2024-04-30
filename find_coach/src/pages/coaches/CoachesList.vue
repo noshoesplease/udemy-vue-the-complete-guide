@@ -1,5 +1,10 @@
 <template>
-    coaches list page
+    <section>
+        filter
+    </section>
+    <section>
+        list of coaches
+    </section>
 </template>
 
 <script>
