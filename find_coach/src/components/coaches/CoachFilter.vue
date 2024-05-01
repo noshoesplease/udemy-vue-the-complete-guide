@@ -31,29 +31,9 @@ export default {
   methods: {
     setFilter(event) {
       const inputId = event.target.id;
-      // console.log("inputId");
-      // console.log(inputId);
-      // console.log();
-
       const isActive = event.target.checked;
-      // console.log("isActive");
-      // console.log(isActive);
-      // console.log();
-
-      // console.log("this.filters");
-      // console.log(this.filters);
-      // console.log();
-
       const updatedFilters = { ...this.filters, [inputId]: isActive };
-      // console.log("updatedFilters");
-      // console.log(updatedFilters);
-      // console.log();
-
       this.filters = updatedFilters;
-      // console.log("this.filters");
-      // console.log(this.filters);
-      // console.log();
-
       this.$emit("change-filter", updatedFilters);
     },
   },
