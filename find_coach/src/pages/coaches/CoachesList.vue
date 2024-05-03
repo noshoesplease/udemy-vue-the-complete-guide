@@ -7,6 +7,7 @@
       <div class="controls">
         <base-button mode="outline">Refresh</base-button>
         <base-button v-if="!isCoach" link to="/register">Register as Coach</base-button>
+        <base-button v-if="!isCoach" link to="/register">Register as Coach</base-button>
       </div>
       <ul v-if="hasCoaches">
         <coach-item
@@ -14,6 +15,7 @@
           :key="coach.id"
           :id="coach.id"
           :first-name="coach.firstName"
+          :last-name="coach.lastName"
           :last-name="coach.lastName"
           :rate="coach.hourlyRate"
           :areas="coach.areas"
@@ -31,6 +33,7 @@ import CoachFilter from '../../components/coaches/CoachFilter.vue';
 export default {
   components: {
     CoachItem,
+    CoachFilter,
     CoachFilter,
   },
   data() {
