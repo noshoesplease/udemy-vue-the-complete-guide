@@ -1,9 +1,1 @@
-<template>
-    CONTACT COACH
-</template>
-
-<script>
-export default {};
-</script>
-
-<style scoped></style>
+<template>CONTACT A COACH</template>

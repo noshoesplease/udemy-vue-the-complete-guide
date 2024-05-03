@@ -19,7 +19,11 @@ export default {
   components: {
     CoachForm,
   },
+  methods: {
+    saveData(formData) {
+      this.$store.dispatch("coaches/registerCoach", formData);
+      this.$router.replace("/coaches");
+    },
+  },
 };
 </script>
-
-<style scoped></style>

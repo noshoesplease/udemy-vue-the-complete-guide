@@ -11,12 +11,10 @@
       ></base-badge>
     </div>
     <div class="actions">
-      <base-button :link="true" :to="coachContactLink" mode="outline"
-        >Contact
-      </base-button>
-      <base-button :link="true" :to="coachDetailLink"
-        >View Details
-      </base-button>
+      <base-button mode="outline" link :to="coachContactLink"
+        >Contact</base-button
+      >
+      <base-button link :to="coachDetailsLink">View Details</base-button>
     </div>
   </li>
 </template>
@@ -26,13 +24,13 @@ export default {
   props: ["id", "firstName", "lastName", "rate", "areas"],
   computed: {
     fullName() {
-      return `${this.firstName} ${this.lastName}`;
+      return this.firstName + " " + this.lastName;
     },
     coachContactLink() {
-      return `${this.$route.path}/${this.id}/contact`;
+      return this.$route.path + "/" + this.id + "/contact"; // /coaches/c1/contact
     },
-    coachDetailLink() {
-      return `${this.$route.path}/${this.id}`;
+    coachDetailsLink() {
+      return this.$route.path + "/" + this.id; // /coaches/c1
     },
   },
 };
