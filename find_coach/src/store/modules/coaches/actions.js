@@ -30,11 +30,20 @@ export default {
     });
   },
   async loadCoaches(context, payload) {
-    const response = await fetch(import.meta.env.VITE_FIREBASE_URL);
-    const responseData = await response.json();
+    let response;
+    let responseData;
 
-    if(!response.ok) {
-      // error ...
+    try {
+      response = await fetch(import.meta.env.VITE_FIREBASE_URL);
+      responseData = await response.json();
+    } catch {
+      const error = new Error(responseData?.message || "Failed to fetch!");
+      throw error;
+    }
+
+    if (!response.ok) {
+      const error = new Error(responseData?.message || "Failed to fetch!");
+      throw error;
     }
 
     const coaches = [];
