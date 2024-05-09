@@ -30,6 +30,8 @@ export default {
     });
   },
   async loadCoaches(context, payload) {
+    if (!payload.forceRefresh && !context.getters.shouldUpdate) return;
+
     let response;
     let responseData;
 
@@ -60,5 +62,6 @@ export default {
     }
 
     context.commit("setCoaches", coaches);
+    context.commit("setFetchTimestamp");
   },
 };
