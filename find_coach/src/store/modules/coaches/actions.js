@@ -9,7 +9,7 @@ export default {
       areas: data.areas,
     };
 
-    const fetchURL = import.meta.env.VITE_FIREBASE_URL.replace(
+    const fetchURL = import.meta.env.VITE_FIREBASE_COACHES_URL.replace(
       "coaches.json",
       `coaches/${userId}.json`
     );
@@ -34,7 +34,7 @@ export default {
     let responseData;
 
     try {
-      response = await fetch(import.meta.env.VITE_FIREBASE_URL);
+      response = await fetch(import.meta.env.VITE_FIREBASE_COACHES_URL);
       responseData = await response.json();
     } catch {
       const error = new Error(responseData?.message || "Failed to fetch!");
