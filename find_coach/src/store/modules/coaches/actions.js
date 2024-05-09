@@ -9,7 +9,10 @@ export default {
       areas: data.areas,
     };
 
-    const fetchURL = import.meta.env.VITE_FIREBASE_URL.replace('coaches.json', `coaches/${userId}.json`);
+    const fetchURL = import.meta.env.VITE_FIREBASE_URL.replace(
+      "coaches.json",
+      `coaches/${userId}.json`
+    );
     const response = await fetch(fetchURL, {
       method: "PUT",
       body: JSON.stringify(coachData),
@@ -21,10 +24,32 @@ export default {
       // error ...
     }
 
-
     context.commit("registerCoach", {
       ...coachData,
       id: userId,
     });
+  },
+  async loadCoaches(context, payload) {
+    const response = await fetch(import.meta.env.VITE_FIREBASE_URL);
+    const responseData = await response.json();
+
+    if(!response.ok) {
+      // error ...
+    }
+
+    const coaches = [];
+    for (const key in responseData) {
+      const coach = {
+        id: key,
+        firstName: responseData[key].firstName,
+        lastName: responseData[key].lastName,
+        description: responseData[key].description,
+        hourlyRate: responseData[key].hourlyRate,
+        areas: responseData[key].areas,
+      };
+      coaches.push(coach);
+    }
+
+    context.commit("setCoaches", coaches);
   },
 };
