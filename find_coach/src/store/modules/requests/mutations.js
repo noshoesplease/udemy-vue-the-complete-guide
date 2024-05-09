@@ -3,4 +3,7 @@ export default {
     // this assumes payload has been sanitized and validated and totally processed
     state.requests.push(payload);
   },
+  setRequests(state, payload) {
+    state.requests = payload;
+  },
 };
