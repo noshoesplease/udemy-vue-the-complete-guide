@@ -9,9 +9,10 @@ export default {
       areas: data.areas,
     };
 
+    const authToken = context.rootGetters.token;
     const fetchURL = import.meta.env.VITE_FIREBASE_COACHES_URL.replace(
       "coaches.json",
-      `coaches/${userId}.json`
+      `coaches/${userId}.json?auth=${authToken}`
     );
     const response = await fetch(fetchURL, {
       method: "PUT",
