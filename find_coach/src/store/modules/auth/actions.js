@@ -29,6 +29,15 @@ export default {
       tokenExpiration: responseData.expiresIn,
     });
   },
+
+  logout(context) {
+    context.commit("setUser", {
+      token: null,
+      userId: null,
+      tokenExpiration: null,
+    });
+  },
+
   async signup(context, payload) {
     const fetchURL = `https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=${
       import.meta.env.VITE_FIREBASE_AUTH_API_KEY
