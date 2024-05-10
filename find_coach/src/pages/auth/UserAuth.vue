@@ -35,11 +35,7 @@
 
 <script>
 export default {
-  methods: {
-    handleError() {
-      this.error = null;
-    },
-  },
+ 
   data() {
     return {
       email: "",
@@ -85,6 +81,9 @@ export default {
     },
     switchAuthMode() {
       this.mode = this.mode === "login" ? "signup" : "login";
+    },
+    handleError() {
+      this.error = null;
     },
   },
   computed: {

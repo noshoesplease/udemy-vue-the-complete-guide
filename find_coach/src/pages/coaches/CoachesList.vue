@@ -44,7 +44,6 @@ export default {
   components: {
     CoachItem,
     CoachFilter,
-    CoachFilter,
   },
   data() {
     return {
