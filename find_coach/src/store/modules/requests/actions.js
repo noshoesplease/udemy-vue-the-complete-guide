@@ -30,9 +30,10 @@ export default {
 
   async fetchRequests(context) {
     const coachId = context.rootGetters.userId;
+    const authToken = context.rootGetters.token;
     const fetchURL = import.meta.env.VITE_FIREBASE_REQUESTS_URL.replace(
       "requests.json",
-      `requests/${coachId}.json`
+      `requests/${coachId}.json?auth=${authToken}`
     );
 
     const response = await fetch(fetchURL);
