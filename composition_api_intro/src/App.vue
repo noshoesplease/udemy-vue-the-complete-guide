@@ -21,6 +21,8 @@
   <section class="container">
     <h2>{{ user.Name }}</h2>
     <h3>{{ user.Age }}</h3>
+
+    <button @click="changeAge">Change age</button>
   </section>
 </template>
 
@@ -71,6 +73,10 @@ setTimeout(() => {
   user.Name = "Dev!";
   user.Age = 37;
 }, 2000);
+
+const changeAge = () => {
+  user.Age++;
+};
 
 
 </script>
