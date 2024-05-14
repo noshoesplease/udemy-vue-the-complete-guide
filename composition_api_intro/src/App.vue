@@ -21,8 +21,18 @@
   <section class="container">
     <h2>{{ user.Name }}</h2>
     <h3>{{ user.Age }}</h3>
-
     <button @click="changeAge">Change age</button>
+  </section>
+
+  <section class="container">
+    <h2>{{ combinedName }}</h2>
+
+    <div>
+      <input type="text" placeholder="First Name" @input="setFirstName" />
+    </div>
+    <div>
+      <input type="text" placeholder="Last Name" @input="setLastName" />
+    </div>
   </section>
 </template>
 
@@ -49,19 +59,32 @@ export default {
 </script> -->
 
 <script setup>
-import { reactive, ref } from "vue";
+import { reactive, ref, computed } from "vue";
 
 const userName = ref("Devin");
 const userAge = ref(36);
+
+const firstName = ref("");
+function setFirstName(event) {
+  firstName.value = event.target.value;
+}
+
+const lastName = ref("");
+function setLastName(event) {
+  lastName.value = event.target.value;
+}
+
+const combinedName = computed(
+  () => `${firstName.value ? firstName.value : "Erase"} ${lastName.value ? lastName.value : "Me"}`
+);
 
 setTimeout(() => {
   userName.value = "Dev";
   userAge.value = 37;
 }, 2000);
 
-
 /**
- * reactive() only works with objects, 
+ * reactive() only works with objects,
  * not with primitive values like strings or numbers.
  */
 const user = reactive({
@@ -77,8 +100,6 @@ setTimeout(() => {
 const changeAge = () => {
   user.Age++;
 };
-
-
 </script>
 
 <style>
