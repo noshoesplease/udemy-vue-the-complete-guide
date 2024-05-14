@@ -45,6 +45,13 @@
       <input type="text" placeholder="Last Name" v-model="lastNameRef" />
     </div>
   </section>
+
+  <section class="container">
+    <!-- watch demo -->
+    <h2>{{ userFood }}</h2>
+    <button @click="changeFood">Change food</button>
+
+  </section>
 </template>
 
 <!-- <script>
@@ -70,7 +77,7 @@ export default {
 </script> -->
 
 <script setup>
-import { reactive, ref, computed } from "vue";
+import { reactive, ref, computed, watch } from "vue";
 
 const userName = ref("Devin");
 const userAge = ref(36);
@@ -123,6 +130,24 @@ setTimeout(() => {
 const changeAge = () => {
   user.Age++;
 };
+
+
+
+const userFood = ref("Pizza");
+const changeFood = () => {
+  userFood.value = "Burger";
+};
+
+watch(
+  userFood,
+  (newValue, oldValue) => {
+    console.log(`Food changed from ${oldValue} to ${newValue}`);
+  }
+);
+
+
+
+
 </script>
 
 <style>
