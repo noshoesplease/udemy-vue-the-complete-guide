@@ -34,6 +34,17 @@
       <input type="text" placeholder="Last Name" @input="setLastName" />
     </div>
   </section>
+
+  <section class="container">
+    <h2>{{ combinedRefs }}</h2>
+
+    <div>
+      <input type="text" placeholder="First Name" v-model="firstNameRef" />
+    </div>
+    <div>
+      <input type="text" placeholder="Last Name" v-model="lastNameRef" />
+    </div>
+  </section>
 </template>
 
 <!-- <script>
@@ -75,7 +86,19 @@ function setLastName(event) {
 }
 
 const combinedName = computed(
-  () => `${firstName.value ? firstName.value : "Erase"} ${lastName.value ? lastName.value : "Me"}`
+  () =>
+    `${firstName.value ? firstName.value : "Erase"} ${
+      lastName.value ? lastName.value : "Me"
+    }`
+);
+
+const firstNameRef = ref("");
+const lastNameRef = ref("");
+const combinedRefs = computed(
+  () =>
+    `${firstNameRef.value ? firstNameRef.value : "Erase"} ${
+      lastNameRef.value ? lastNameRef.value : "Me"
+    }`
 );
 
 setTimeout(() => {
