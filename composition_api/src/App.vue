@@ -16,6 +16,11 @@
 <template>
   <section class="container">
     <h2>{{ userName }}</h2>
+    <h3>{{ userAge }}</h3>
+  </section>
+  <section class="container">
+    <h2>{{ user.Name }}</h2>
+    <h3>{{ user.Age }}</h3>
   </section>
 </template>
 
@@ -42,13 +47,32 @@ export default {
 </script> -->
 
 <script setup>
-import { ref } from "vue";
+import { reactive, ref } from "vue";
 
 const userName = ref("Devin");
+const userAge = ref(36);
 
 setTimeout(() => {
   userName.value = "Dev";
+  userAge.value = 37;
 }, 2000);
+
+
+/**
+ * reactive() only works with objects, 
+ * not with primitive values like strings or numbers.
+ */
+const user = reactive({
+  Name: "Devin!",
+  Age: 36,
+});
+
+setTimeout(() => {
+  user.Name = "Dev!";
+  user.Age = 37;
+}, 2000);
+
+
 </script>
 
 <style>
