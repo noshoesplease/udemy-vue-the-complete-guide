@@ -62,6 +62,14 @@
     </div>
     <button @click="setNameTemplateRef">Set Last Name</button>
   </section>
+
+  <section class="container">
+    <user-data
+      :firstName="anotherName"
+      :lastName="lastName"
+      :age="userAge"
+    ></user-data>
+  </section>
 </template>
 
 <!-- <script>
@@ -88,6 +96,9 @@ export default {
 
 <script setup>
 import { reactive, ref, computed, watch } from "vue";
+import UserData from "./components/UserData.vue";
+
+const anotherName = ref("Devin");
 
 const userName = ref("Devin");
 const userAge = ref(36);
@@ -167,17 +178,12 @@ function setLastNameTemplateRef() {
   lastNameTemplate.value = lastNameTemplateRef.value.value;
 }
 
-
 const combinedTemplateRefs = computed(
   () =>
     `${firstNameTemplate.value ? firstNameTemplate.value : "Erase"} ${
       lastNameTemplate.value ? lastNameTemplate.value : "Me"
     }`
 );
-
-
-
-
 </script>
 
 <style>
