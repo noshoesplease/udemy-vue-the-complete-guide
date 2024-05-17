@@ -96,7 +96,7 @@ export default {
 </script> -->
 
 <script setup>
-import { reactive, ref, computed, watch } from "vue";
+import { reactive, ref, computed, watch, provide } from "vue";
 import UserData from "./components/UserData.vue";
 
 function anEventHandler() {
@@ -189,6 +189,9 @@ const combinedTemplateRefs = computed(
       lastNameTemplate.value ? lastNameTemplate.value : "Me"
     }`
 );
+
+provide('aProvidedValue', 'This is a provided value');
+
 </script>
 
 <style>
