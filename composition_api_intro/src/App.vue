@@ -26,7 +26,6 @@
 
   <section class="container">
     <h2>{{ combinedName }}</h2>
-
     <div>
       <input type="text" placeholder="First Name" @input="setFirstName" />
     </div>
@@ -37,7 +36,6 @@
 
   <section class="container">
     <h2>{{ combinedRefs }}</h2>
-
     <div>
       <input type="text" placeholder="First Name" v-model="firstNameRef" />
     </div>
@@ -50,7 +48,28 @@
     <!-- watch demo -->
     <h2>{{ userFood }}</h2>
     <button @click="changeFood">Change food</button>
+  </section>
 
+  <section class="container">
+    <!-- template refs -->
+    <h2>Template refs</h2>
+    <h3>{{ combinedTemplateRefs }}</h3>
+    <div>
+      <input type="text" placeholder="First Name" ref="firstNameTemplateRef" />
+    </div>
+    <div>
+      <input type="text" placeholder="Last Name" ref="lastNameTemplateRef" />
+    </div>
+    <button @click="setNameTemplateRef">Set Last Name</button>
+  </section>
+
+  <section class="container">
+    <user-data
+      @emitted-event="anEventHandler"
+      :firstName="anotherName"
+      :lastName="lastName"
+      :age="userAge"
+    ></user-data>
   </section>
 </template>
 
@@ -77,7 +96,14 @@ export default {
 </script> -->
 
 <script setup>
-import { reactive, ref, computed, watch } from "vue";
+import { reactive, ref, computed, watch, provide } from "vue";
+import UserData from "./components/UserData.vue";
+
+function anEventHandler() {
+  console.log("An event handler");
+}
+
+const anotherName = ref("Devin");
 
 const userName = ref("Devin");
 const userAge = ref(36);
@@ -131,22 +157,40 @@ const changeAge = () => {
   user.Age++;
 };
 
-
-
 const userFood = ref("Pizza");
 const changeFood = () => {
   userFood.value = "Burger";
 };
 
-watch(
-  userFood,
-  (newValue, oldValue) => {
-    console.log(`Food changed from ${oldValue} to ${newValue}`);
-  }
+watch(userFood, (newValue, oldValue) => {
+  console.log(`Food changed from ${oldValue} to ${newValue}`);
+});
+
+const firstNameTemplate = ref("");
+const lastNameTemplate = ref("");
+const firstNameTemplateRef = ref(null);
+const lastNameTemplateRef = ref(null);
+
+function setNameTemplateRef() {
+  setFirstNameTemplateRef();
+  setLastNameTemplateRef();
+}
+
+function setFirstNameTemplateRef() {
+  firstNameTemplate.value = firstNameTemplateRef.value.value;
+}
+function setLastNameTemplateRef() {
+  lastNameTemplate.value = lastNameTemplateRef.value.value;
+}
+
+const combinedTemplateRefs = computed(
+  () =>
+    `${firstNameTemplate.value ? firstNameTemplate.value : "Erase"} ${
+      lastNameTemplate.value ? lastNameTemplate.value : "Me"
+    }`
 );
 
-
-
+provide('aProvidedValue', 'This is a provided value');
 
 </script>
 
