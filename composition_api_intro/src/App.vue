@@ -65,6 +65,7 @@
 
   <section class="container">
     <user-data
+      @emitted-event="anEventHandler"
       :firstName="anotherName"
       :lastName="lastName"
       :age="userAge"
@@ -97,6 +98,10 @@ export default {
 <script setup>
 import { reactive, ref, computed, watch } from "vue";
 import UserData from "./components/UserData.vue";
+
+function anEventHandler() {
+  console.log("An event handler");
+}
 
 const anotherName = ref("Devin");
 
