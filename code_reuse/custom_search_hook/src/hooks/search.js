@@ -1,6 +1,5 @@
 import { ref, computed, watch } from 'vue';
 
-
 export default function useSearch(items, searchProp) {
   const enteredSearchTerm = ref("");
   const activeSearchTerm = ref("");
