@@ -1,1 +1,1 @@
-Course material from https://www.udemy.com/course/awesome-nextjs-with-react-and-node-amazing-portfolio-app/
+Course material from https://www.udemy.com/course/vuejs-2-the-complete-guide/
